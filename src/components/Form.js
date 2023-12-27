@@ -19,16 +19,13 @@ export default function Form() {
         `https://lichess.org/api/games/user/${username}?accuracy=true&max=3`
       );
 
-      // Check if the request was successful (status code 200)
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Get a readable stream reader
       const reader = response.body.getReader();
       const textDecoder = new TextDecoder();
 
-      // Read the stream in chunks
       while (true) {
         const { done, value } = await reader.read();
 
@@ -36,10 +33,8 @@ export default function Form() {
           console.log("Stream is done");
           break;
         }
-        // Convert the binary data to a string
 
         const chunkText = textDecoder.decode(value);
-        // Process the chunk of data (in this case, log it to the console)
         console.log("Received chunk of data:", typeof chunkText, chunkText);
 
         const pattern = /\[Event "(.+?)"\][\s\S]+?\[Result "(.+?)"\]/g;
