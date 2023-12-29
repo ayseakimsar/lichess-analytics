@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Form({ username, setUsername, gameData, setGameData }) {
-  const [timeControl, setTimeControl] = useState("rapid");
+  const [timeControl, setTimeControl] = useState("bullet");
 
   function handleUsernameChange(e) {
     e.preventDefault();
@@ -16,7 +16,7 @@ export default function Form({ username, setUsername, gameData, setGameData }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://lichess.org/api/games/user/${username}?accuracy=true&max=40&perfType=${timeControl}`
+        `https://lichess.org/api/games/user/${username}?opening=true&evals=true&literate=true&max=10&perfType=${timeControl}`
       );
 
       if (!response.ok) {
@@ -36,7 +36,7 @@ export default function Form({ username, setUsername, gameData, setGameData }) {
         }
 
         const chunkText = textDecoder.decode(value);
-        //console.log("Received chunk of data:", typeof chunkText, chunkText);
+        console.log("Received chunk of data:", typeof chunkText, chunkText);
 
         const pattern =
           /\[Event "(.+?)"\][\s\S]+?\[White "(.+?)"\][\s\S]+?\[Black "(.+?)"\][\s\S]+?\[Result "(.+?)"\]/g;

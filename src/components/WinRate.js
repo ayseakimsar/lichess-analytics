@@ -35,19 +35,10 @@ export default function WinRate({ username, gameData }) {
     setNumberOfGamesPlayedAsBlack(blackGamesPlayed);
     setNumberOfGamesWinAsWhite(whiteWins);
     setNumberOfGamesWinAsBlack(blackWins);
-
-    console.log(
-      numberOfGamesPlayedAsWhite,
-      numberOfGamesWinAsWhite,
-      numberOfGamesPlayedAsBlack,
-      numberOfGamesWinAsBlack
-    );
-    console.log(gameData);
   }, [gameData]);
 
   return (
     <div>
-      <h5>Win rates over the last 100 games:</h5>
       <p>
         Overall win rate:{" "}
         {Math.round(
