@@ -16,7 +16,7 @@ export default function Form({ username, setUsername, gameData, setGameData }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://lichess.org/api/games/user/${username}?opening=true&evals=true&literate=true&max=10&perfType=${timeControl}`
+        `https://lichess.org/api/games/user/${username}?&opening=true&max=10&perfType=${timeControl}`
       );
 
       if (!response.ok) {
@@ -36,23 +36,25 @@ export default function Form({ username, setUsername, gameData, setGameData }) {
         }
 
         const chunkText = textDecoder.decode(value);
-        console.log("Received chunk of data:", typeof chunkText, chunkText);
+        console.log("Received chunk of data:", chunkText);
 
         const pattern =
-          /\[Event "(.+?)"\][\s\S]+?\[White "(.+?)"\][\s\S]+?\[Black "(.+?)"\][\s\S]+?\[Result "(.+?)"\]/g;
+          /\[Event "(.+?)"\][\s\S]+?\[White "(.+?)"\][\s\S]+?\[Black "(.+?)"\][\s\S]+?\[Result "(.+?)"\][\s\S]+?(\d+\..+?)\s*\d+-\d+|1\/2-1\/2(?!\.\d)|1\//g;
 
         let matches;
-
         while ((matches = pattern.exec(chunkText)) !== null) {
           const event = matches[1].trim();
           const whitePlayer = matches[2].trim();
           const blackPlayer = matches[3].trim();
           const result = matches[4].trim();
+          const pgn = matches[5].trim();
+
           let game = {
             event: event,
             whitePlayer: whitePlayer,
             blackPlayer: blackPlayer,
             result: result,
+            pgn: `${result === "1/2-1/2" ? pgn.slice(0, -2) : pgn}`,
           };
           games.push(game);
         }

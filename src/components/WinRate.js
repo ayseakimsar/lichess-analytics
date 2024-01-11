@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function WinRate({ username, gameData }) {
   const [numberOfGamesPlayedAsWhite, setNumberOfGamesPlayedAsWhite] =
@@ -35,7 +35,16 @@ export default function WinRate({ username, gameData }) {
     setNumberOfGamesPlayedAsBlack(blackGamesPlayed);
     setNumberOfGamesWinAsWhite(whiteWins);
     setNumberOfGamesWinAsBlack(blackWins);
+
+    console.log(gameData);
   }, [gameData]);
+
+  console.log(
+    numberOfGamesPlayedAsWhite,
+    numberOfGamesWinAsWhite,
+    numberOfGamesPlayedAsBlack,
+    numberOfGamesWinAsBlack
+  );
 
   return (
     <div>
