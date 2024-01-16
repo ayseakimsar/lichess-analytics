@@ -37,7 +37,7 @@ export default function Form({ username, setUsername, setGameData }) {
         }
 
         const chunkText = textDecoder.decode(value);
-        console.log("Received chunk of data:", chunkText);
+        //console.log("Received chunk of data:", chunkText);
 
         const pattern =
           /\[Event "(.+?)"\][\s\S]+?\[White "(.+?)"\][\s\S]+?\[Black "(.+?)"\][\s\S]+?\[Result "(.+?)"\][\s\S]+?\[ECO "(.+?)"\][\s\S]+?\[Opening "(.+?)"\][\s\S]+?(\d+\..+?)\s*\d+-\d+|1\/2-1\/2(?!\.\d)|1\//g;

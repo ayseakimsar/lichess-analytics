@@ -8,8 +8,6 @@ function App() {
   const [gameData, setGameData] = useState("");
   const [openingEvaluationArray, setOpeningEvaluationArray] = useState([]);
   console.log(openingEvaluationArray);
-
-  console.log(gameData);
   return (
     <div className="App">
       <Form
