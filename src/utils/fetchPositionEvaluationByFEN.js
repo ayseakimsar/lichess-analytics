@@ -1,5 +1,5 @@
 export async function fetchPositionEvaluationByFEN(fen) {
-  let response = await fetch(`https://lichess.org/api/cloud-eval?FEN=${fen}`);
+  let response = await fetch(`https://lichess.org/api/cloud-eval?fen=${fen}`);
   console.log(response);
   if (response.status === 429) throw new Error("Too many requests");
 
