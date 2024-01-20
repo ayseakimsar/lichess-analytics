@@ -17,7 +17,7 @@ export default function Form({ username, setUsername, setGameData }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://lichess.org/api/games/user/${username}?&opening=true&max=100&perfType=${timeControl}`
+        `https://lichess.org/api/games/user/${username}?&opening=true&max=10&perfType=${timeControl}`
       );
 
       if (!response.ok) {
