@@ -6,11 +6,15 @@ export function calculateEvaluationAverages(
   const sumWhiteEval = whiteEvalArray.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
   }, 0);
-  const openingEvaluationAverageAsWhite = sumWhiteEval / whiteEvalArray.length;
+  const openingEvaluationAverageAsWhite = parseFloat(
+    (sumWhiteEval / whiteEvalArray.length).toFixed(2)
+  );
   const sumBlackEval = blackEvalArray.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
   }, 0);
-  const openingEvaluationAverageAsBlack = sumBlackEval / blackEvalArray.length;
+  const openingEvaluationAverageAsBlack = parseFloat(
+    (sumBlackEval / blackEvalArray.length).toFixed(2)
+  );
 
   const sumOverallEval = overallEvalArray.reduce(
     (accumulator, currentValue) => {
@@ -18,8 +22,9 @@ export function calculateEvaluationAverages(
     },
     0
   );
-  const openingEvaluationAverageInOverall =
-    sumOverallEval / overallEvalArray.length;
+  const openingEvaluationAverageInOverall = parseFloat(
+    (sumOverallEval / overallEvalArray.length).toFixed(2)
+  );
   return {
     openingEvalAsWhite: openingEvaluationAverageAsWhite,
     openingEvalAsBlack: openingEvaluationAverageAsBlack,

@@ -6,8 +6,7 @@ import OpeningEvaluation from "./components/OpeningEvaluation";
 function App() {
   const [username, setUsername] = useState("");
   const [gameData, setGameData] = useState("");
-  const [openingEvaluationArray, setOpeningEvaluationArray] = useState([]);
-  console.log(openingEvaluationArray);
+
   return (
     <div className="App">
       <Form
@@ -16,12 +15,7 @@ function App() {
         setUsername={setUsername}
       />
       <WinRate gameData={gameData} username={username} />
-      <OpeningEvaluation
-        gameData={gameData}
-        setOpeningEvaluationArray={setOpeningEvaluationArray}
-        openingEvaluationArray={openingEvaluationArray}
-        username={username}
-      />
+      <OpeningEvaluation gameData={gameData} username={username} />
     </div>
   );
 }
