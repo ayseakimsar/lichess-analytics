@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {*I LOVE ITTTT} PGN
+ * @param {*} numberOfMoves
+ * @returns
+ */
 export function extractOpeningMovesFromPGN(PGN, numberOfMoves) {
   if (!PGN) return;
   const movesArray = PGN.split(" ");

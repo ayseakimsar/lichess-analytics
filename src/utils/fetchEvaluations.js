@@ -1,9 +1,9 @@
-import { extractOpeningMovesFromPGN } from "../utils/extractOpeningMovesFromPGN";
-import { convertPGNtoFEN } from "../utils/convertPGNtoFEN";
-import { fetchPositionEvaluationByFEN } from "../utils/fetchPositionEvaluationByFEN";
+import { extractOpeningMovesFromPGN } from "./extractOpeningMovesFromPGN";
+import { convertPGNtoFEN } from "./convertPGNtoFEN";
+import { fetchPositionEvaluationByFEN } from "./fetchPositionEvaluationByFEN";
 
-export async function fetchOpeningEvaluation(gameData) {
-  let results = [];
+export async function fetchEvaluations(gameData, setOpeningEvaluationArray) {
+  const results = [];
   try {
     for (const game of gameData) {
       const PGNofFirst7Moves = extractOpeningMovesFromPGN(game.pgn, 7);
@@ -21,7 +21,7 @@ export async function fetchOpeningEvaluation(gameData) {
         });
       }
     }
-    return results;
+    setOpeningEvaluationArray(results);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }
